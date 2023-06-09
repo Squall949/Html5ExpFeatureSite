@@ -4,6 +4,35 @@
     <title></title>
 </head>
 <body>
-    HELLO WORLD
+    <input type="button" onclick="LaunchScanner()" value="啟動Scanner"/>
+    掃描結果: <input id="txtResult" style="width:80%;" />
+    <div id="qr-reader" width="100%"> </div>
+    <script src="html5-qrcode.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function LaunchScanner() {
+            // This method will trigger user permissions
+            Html5Qrcode.getCameras().then(devices => {
+                if (devices && devices.length) {
+                    var cameraId = devices[0].id;
+                    const html5QrCode = new Html5Qrcode("qr-reader");
+                    const qrCodeSuccessCallback = (decodedText, decodedResult) => {
+                        document.getElementById("txtResult").value = decodedText;
+                    };
+                    const config = {
+                      fps: 25,
+                      qrbox: {
+                        width: 350,
+                        height: 350
+                      }
+                    };
+                    html5QrCode.start({
+                      facingMode: "environment"
+                    }, config, qrCodeSuccessCallback);
+                }
+            }).catch(err => {
+                // handle err
+            });
+        }
+    </script>
 </body>
 </html>
