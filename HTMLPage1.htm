@@ -16,7 +16,7 @@
                     var cameraId = devices[0].id;
                     const html5QrCode = new Html5Qrcode("qr-reader");
                     const qrCodeSuccessCallback = (decodedText, decodedResult) => {
-                        document.getElementById("txtResult").value = decodedText;
+                        document.getElementById("txtResult").value = decodedResult;
                     };
                     const config = {
                       fps: 25,
