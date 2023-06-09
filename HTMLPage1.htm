@@ -17,12 +17,13 @@
                     const html5QrCode = new Html5Qrcode("qr-reader");
                     const qrCodeSuccessCallback = (decodedText, decodedResult) => {
                         document.getElementById("txtResult").value = decodedText;
+                        document.getElementById("txtResult").focus();
                     };
                     const config = {
                       fps: 25,
                       qrbox: {
-                        width: 400,
-                        height: 400
+                        width: 500,
+                        height: 500
                       }
                     };
                     html5QrCode.start({
