@@ -18,12 +18,13 @@
                     const qrCodeSuccessCallback = (decodedText, decodedResult) => {
                         document.getElementById("txtResult").value = decodedText;
                         document.getElementById("txtResult").focus();
+                        html5QrCode.stop();
                     };
                     const config = {
                       fps: 25,
                       qrbox: {
-                        width: 500,
-                        height: 500
+                        width: 550,
+                        height: 550
                       }
                     };
                     html5QrCode.start({
